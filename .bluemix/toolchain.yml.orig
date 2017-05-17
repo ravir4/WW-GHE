@@ -17,7 +17,7 @@ template:
     git branch: >-
       [master](https://github.com/open-toolchain/devteaminsights-toolchain/tree/master)
 toolchain:
-  name: 'ravi-www-ghe-{{timestamp}}'
+  name: 'devteaminsights-toolchain-{{timestamp}}'
   template:
     getting_started:
       $ref: "#/messages/template.gettingStarted"    
@@ -28,11 +28,19 @@ services:
     parameters:
       type: 'advanced'
       is_developer_insights_enabled: true
-  ww-ghe-repo:
-    service_id: github_integrated
+  github-repo:
+    service_id: githubpublic
     parameters:
       repo_name: ''
       repo_url: ''
       type: link
       has_issues: true
+  jira:
+    service_id: jira
+    parameters:
+      type: existing
+      project_key: ''
+      api_url: ''
+  messaging:
+    service_id: slack
 form: {}
